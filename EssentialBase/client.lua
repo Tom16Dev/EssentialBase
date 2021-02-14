@@ -27,9 +27,9 @@ end)
 
 -- Disabling God Mode and Infinite Ammo 
 Citizen.CreateThread(function()
-	while true do
-		Citizen.Wait(0)
-		if config.antigod == true then
+	if config.antigod == true then
+		while true do
+			Citizen.Wait(0)
 			SetPedInfiniteAmmoClip(PlayerPedId(),false)
 			SetPlayerInvincible(PlayerId(),false)
 			SetEntityInvincible(PlayerPedId(),false)
@@ -41,10 +41,10 @@ end)
 
 -- GUN HITTING
 Citizen.CreateThread(function()
-    while true do
-		Citizen.Wait(0)
-		local ped = PlayerPedId()
-		if config.gunhit == true then
+	local ped = PlayerPedId()
+	if config.gunhit == true then
+    	while true do
+			Citizen.Wait(0)
 			if IsPedArmed(ped, 6) then
 				DisableControlAction(1, 140, true)
 				DisableControlAction(1, 141, true)
@@ -66,8 +66,8 @@ end)
 -- Anti VDM
 Citizen.CreateThread(function()
     while true do
+		Citizen.Wait(0)
         SetWeaponDamageModifier(-1553120962, config.antivdm)-- run over by a car
         --SetWeaponDamageModifier(133987706, config.antivdm)
-	    Wait(0)
     end
 end)
